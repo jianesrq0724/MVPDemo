@@ -8,5 +8,5 @@ import com.carl.mvpdemo.interfaces.ILoading;
  * @since 2018/5/10
  */
 public interface MainI extends ILoading {
-    public void loginSuccess(String msg);
+    void loginSuccess(String msg);
 }
