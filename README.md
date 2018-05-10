@@ -1,6 +1,7 @@
 # MVP demo
 * 是否引入ButterKnife
 * ButterKnife在library和组件化的时候很不方便，这里先不适用ButterKnkife，使用findViewById,后期考虑databinding
+* 插件Android Layout ID convert可以方便的生成findViewById
 
 ## RxManage 对线程管理
 
