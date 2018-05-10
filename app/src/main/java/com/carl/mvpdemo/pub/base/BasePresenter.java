@@ -1,5 +1,6 @@
 package com.carl.mvpdemo.pub.base;
 
+
 import com.carl.mvpdemo.pub.utils.RxManage;
 
 import java.lang.ref.WeakReference;

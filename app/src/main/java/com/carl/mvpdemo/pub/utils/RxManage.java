@@ -17,6 +17,7 @@ public class RxManage {
     private HashMap<String, Disposable> mDisposableHashMap = new HashMap();
 
     public RxManage() {
+
     }
 
     public void add(Disposable m) {

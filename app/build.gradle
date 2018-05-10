@@ -23,7 +23,7 @@ android {
 
         //测试环境
         experiment {
-            debuggable false
+            debuggable true
             minifyEnabled false
             multiDexEnabled true
             //是否需要本地异常日志
@@ -32,9 +32,9 @@ android {
 
         //debug环境
         debug {
-            debuggable false
+            debuggable true
             minifyEnabled false
-            multiDexEnabled true
+            multiDexEnabled false
             //是否需要本地异常日志
             buildConfigField "boolean", "IS_CRASH", "true"
         }

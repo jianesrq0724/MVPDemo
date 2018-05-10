@@ -31,7 +31,8 @@ public class MainActivity extends BaseActivity<MainI, MainPresenter> implements 
 
     @Override
     protected void initView() {
-
+        mToolbarManager.hideBackIcon();
+        mToolbarManager.setToolbarTitle("MVP Demo");
     }
 
     @Override
