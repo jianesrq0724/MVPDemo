@@ -16,15 +16,21 @@ import com.carl.mvpdemo.utils.ToastUtils;
  */
 public class MainActivity extends BaseActivity<MainI, MainPresenter> implements MainI {
 
-    Button mButton;
+    private Button mButton;
+
 
     @Override
-    protected void initView() {
+    protected void findView() {
         mButton = findViewById(R.id.button);
     }
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
 
     }
 

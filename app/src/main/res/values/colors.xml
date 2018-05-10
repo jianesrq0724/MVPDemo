@@ -9,4 +9,12 @@
 
     <!-- 白色 -->
     <color name="white">#FFFFFF</color>
+
+    <!-- 背景色 -->
+    <color name="background">#F5F6F8</color>
+
+    <!--文本红色-->
+    <color name="text_red">#FF4C4C</color>
+
+
 </resources>

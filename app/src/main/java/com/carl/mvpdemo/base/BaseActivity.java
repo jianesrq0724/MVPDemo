@@ -29,14 +29,18 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         if (mPresenter != null) {
             mPresenter.attachView((V)this);
         }
+        findView();
         initData();
         initView();
         setOnInteractListener();
     }
 
-    protected abstract void initView();
+    protected abstract void findView();
 
     protected abstract void initData();
+
+    protected abstract void initView();
+
 
     public abstract void setOnInteractListener();
 

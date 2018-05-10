@@ -11,9 +11,39 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        //开发环境
+        develop {
+            debuggable true
+            minifyEnabled false// 是否混淆
+            shrinkResources false// 是否去除无效的资源文件
+            multiDexEnabled true
+            //是否需要本地异常日志
+            buildConfigField "boolean", "IS_CRASH", "true"
+        }
+
+        //测试环境
+        experiment {
+            debuggable false
             minifyEnabled false
+            multiDexEnabled true
+            //是否需要本地异常日志
+            buildConfigField "boolean", "IS_CRASH", "true"
+        }
+
+        //debug环境
+        debug {
+            debuggable false
+            minifyEnabled false
+            multiDexEnabled true
+            //是否需要本地异常日志
+            buildConfigField "boolean", "IS_CRASH", "true"
+        }
+
+        release {
+            minifyEnabled false//是否开启混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //是否需要本地异常日志
+            buildConfigField "boolean", "IS_CRASH", "true"
         }
     }
 }
@@ -30,4 +60,6 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:2.1.13"
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    //时间工具类
+    api 'joda-time:joda-time:2.3'
 }
