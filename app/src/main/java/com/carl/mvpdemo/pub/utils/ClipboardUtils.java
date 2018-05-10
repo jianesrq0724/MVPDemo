@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.utils;
+package com.carl.mvpdemo.pub.utils;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

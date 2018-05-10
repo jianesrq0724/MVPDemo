@@ -1,12 +1,12 @@
-package com.carl.mvpdemo.base;
+package com.carl.mvpdemo.pub.base;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.carl.mvpdemo.interfaces.ILoading;
-import com.carl.mvpdemo.loading.LoadingDialog;
+import com.carl.mvpdemo.pub.loading.interfaces.ILoading;
+import com.carl.mvpdemo.pub.loading.LoadingDialog;
 
 /**
  * @author Carl

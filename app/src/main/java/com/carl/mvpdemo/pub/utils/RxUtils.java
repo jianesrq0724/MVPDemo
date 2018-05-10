@@ -1,6 +1,6 @@
-package com.carl.mvpdemo.utils;
+package com.carl.mvpdemo.pub.utils;
 
-import com.carl.mvpdemo.interfaces.ILoading;
+import com.carl.mvpdemo.pub.loading.interfaces.ILoading;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;

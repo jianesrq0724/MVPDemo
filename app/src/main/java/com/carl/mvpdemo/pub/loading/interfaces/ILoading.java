@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.interfaces;
+package com.carl.mvpdemo.pub.loading.interfaces;
 
 /**
  * @author Carl

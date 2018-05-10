@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.loading;
+package com.carl.mvpdemo.pub.loading;
 
 import android.app.Dialog;
 import android.content.Context;

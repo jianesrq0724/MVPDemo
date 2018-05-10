@@ -21,7 +21,7 @@
 
         <!--崩溃日志页面-->
         <activity
-            android:name=".crash.CrashInfoActivity"
+            android:name=".pub.crash.CrashInfoActivity"
             android:screenOrientation="portrait" />
 
     </application>

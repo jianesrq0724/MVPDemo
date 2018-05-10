@@ -1,12 +1,12 @@
-package com.carl.mvpdemo.crash;
+package com.carl.mvpdemo.pub.crash;
 
 import android.content.Context;
 import android.content.Intent;
 import android.widget.TextView;
 
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.base.BaseActivity;
-import com.carl.mvpdemo.base.BasePresenter;
+import com.carl.mvpdemo.pub.base.BaseActivity;
+import com.carl.mvpdemo.pub.base.BasePresenter;
 
 
 public class CrashInfoActivity extends BaseActivity {

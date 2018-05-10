@@ -3,7 +3,7 @@ package com.carl.mvpdemo;
 import android.app.Application;
 import android.content.Context;
 
-import com.carl.mvpdemo.crash.CrashHandler;
+import com.carl.mvpdemo.pub.crash.CrashHandler;
 
 /**
  * @author Carl

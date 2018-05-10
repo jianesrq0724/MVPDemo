@@ -1,6 +1,6 @@
 package com.carl.mvpdemo.home.interfaces;
 
-import com.carl.mvpdemo.interfaces.ILoading;
+import com.carl.mvpdemo.pub.loading.interfaces.ILoading;
 
 /**
  * @author Carl

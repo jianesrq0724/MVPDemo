@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.crash;
+package com.carl.mvpdemo.pub.crash;
 
 
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 
-import com.carl.mvpdemo.utils.FileUtils;
-import com.carl.mvpdemo.utils.TimeUtils;
+import com.carl.mvpdemo.pub.utils.FileUtils;
+import com.carl.mvpdemo.pub.utils.TimeUtils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

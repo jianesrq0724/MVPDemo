@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.loading;
+package com.carl.mvpdemo.pub.loading;
 
 /**
  * @author Carl
