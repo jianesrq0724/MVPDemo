@@ -15,7 +15,19 @@
           mViewRef = new WeakReference<>(view);
       }
      
-     
+## 权限完成封装，请求权限
+permissions("短信", new String[]{Manifest.permission.SEND_SMS}, new PermissionsResultListener() {
+
+    @Override
+    public void onPermissionGranted() {
+        ToastUtils.showShort("短信权限授予");
+    }
+
+    @Override
+    public void onPermissionDenied() {
+        ToastUtils.showShort("短信权限拒绝");
+    }
+});
 
 ## 集成以下功能
 * 异常崩溃的捕获
@@ -24,6 +36,7 @@
 * 多编译环境buildTypes
 * 防止快速点击启动多个页面
 * toolBar封装
+* 权限的封装
 
 --- 
 # 待解决的问题:

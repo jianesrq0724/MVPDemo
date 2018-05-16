@@ -2,8 +2,12 @@ package com.carl.mvpdemo.pub.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,11 +16,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+
 import com.carl.mvpdemo.R;
 import com.carl.mvpdemo.pub.loading.LoadingDialog;
 import com.carl.mvpdemo.pub.loading.interfaces.ILoading;
 import com.carl.mvpdemo.pub.utils.ActivityCollector;
 import com.carl.mvpdemo.pub.utils.ToolbarManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Carl
@@ -171,4 +179,66 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     protected void lockClick() {
         clickable = false;
     }
+
+    private PermissionsResultListener mPermissionListener;
+
+    List<String> mPermissionList = new ArrayList<>();
+
+
+    /**
+     * 分装权限申请
+     */
+    public void permissions(String desc, String[] permissions, PermissionsResultListener permissionListener) {
+        mPermissionList.clear();
+        mPermissionListener = permissionListener;
+        /**
+         * 判断哪些权限未授予
+         */
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(mContext, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                mPermissionList.add(permissions[i]);
+            }
+        }
+        /**
+         * 判断未授予的权限是否为空
+         * 为空，表示都授予了
+         */
+        if (mPermissionList.isEmpty()) {
+            mPermissionListener.onPermissionGranted();
+        } else {//请求权限方法
+            ActivityCompat.requestPermissions(this, mPermissionList.toArray(new String[mPermissionList.size()]), 1);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //部分手机上，可能会出现grantResult length为0的情况
+        if (grantResults.length == 0) {
+            mPermissionListener.onPermissionDenied();
+            return;
+        }
+
+        int grantLength = grantResults.length;
+        for (int i = 0; i < grantLength; i++) {
+            if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                mPermissionListener.onPermissionDenied();
+                return;
+            }
+        }
+        mPermissionListener.onPermissionGranted();
+    }
+
+    /**
+     * 权限通信接口
+     */
+    public interface PermissionsResultListener {
+
+        void onPermissionGranted();
+
+        void onPermissionDenied();
+
+    }
+
 }

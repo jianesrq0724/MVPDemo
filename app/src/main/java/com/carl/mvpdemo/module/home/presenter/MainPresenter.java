@@ -1,7 +1,7 @@
-package com.carl.mvpdemo.home.presenter;
+package com.carl.mvpdemo.module.home.presenter;
 
 import com.carl.mvpdemo.pub.base.BasePresenter;
-import com.carl.mvpdemo.home.interfaces.MainI;
+import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.pub.utils.RxUtils;
 
 import java.util.concurrent.TimeUnit;

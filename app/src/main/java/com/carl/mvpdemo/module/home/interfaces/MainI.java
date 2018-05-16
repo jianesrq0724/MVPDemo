@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.home.interfaces;
+package com.carl.mvpdemo.module.home.interfaces;
 
 import com.carl.mvpdemo.pub.loading.interfaces.ILoading;
 
