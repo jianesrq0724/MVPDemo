@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.module.test.adapter;
+package com.carl.mvpdemo.module.testlist.adapter;
 
 import com.carl.mvpdemo.R;
 import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;

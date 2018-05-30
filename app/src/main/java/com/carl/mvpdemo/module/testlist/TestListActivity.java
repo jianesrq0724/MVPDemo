@@ -1,10 +1,10 @@
-package com.carl.mvpdemo.module.test;
+package com.carl.mvpdemo.module.testlist;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 
-import com.carl.mvpdemo.module.test.adapter.TestBaseAdapter;
+import com.carl.mvpdemo.module.testlist.adapter.TestBaseAdapter;
 import com.carl.mvpdemo.pub.base.BaseListActivity;
 import com.carl.mvpdemo.pub.utils.RxUtils;
 
@@ -22,13 +22,13 @@ import io.reactivex.functions.Consumer;
  * version 1.0
  * @since 2018/5/30
  */
-public class Test1Activity extends BaseListActivity {
+public class TestListActivity extends BaseListActivity {
 
     private List<String> mTitles = new ArrayList<>();
 
 
     public static void startActivity(Context context) {
-        Intent intent = new Intent(context.getApplicationContext(), Test1Activity.class);
+        Intent intent = new Intent(context.getApplicationContext(), TestListActivity.class);
         context.startActivity(intent);
     }
 
@@ -51,6 +51,7 @@ public class Test1Activity extends BaseListActivity {
     @Override
     protected void initView() {
         super.initView();
+        mToolbarManager.setToolbarTitle("下拉刷新");
         mBaseAdapter = new TestBaseAdapter(mTitles);
         initListView();
 //        enableRefresh(false);

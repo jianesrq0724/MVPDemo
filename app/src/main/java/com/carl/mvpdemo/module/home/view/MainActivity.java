@@ -1,7 +1,5 @@
 package com.carl.mvpdemo.module.home.view;
 
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -9,8 +7,8 @@ import com.carl.mvpdemo.R;
 import com.carl.mvpdemo.module.home.adapter.MainBaseAdapter;
 import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.module.home.presenter.MainPresenter;
-import com.carl.mvpdemo.module.test.Test1Activity;
-import com.carl.mvpdemo.pub.base.BaseActivity;
+import com.carl.mvpdemo.module.testlist.TestListActivity;
+import com.carl.mvpdemo.pub.base.BaseListActivity;
 import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;
 import com.carl.mvpdemo.pub.utils.ToastUtils;
 
@@ -22,23 +20,17 @@ import java.util.List;
  * @version 1.0
  * @since 2018/5/10
  */
-public class MainActivity extends BaseActivity<MainI, MainPresenter> implements MainI {
+public class MainActivity extends BaseListActivity<MainI, MainPresenter> implements MainI {
 
     private RecyclerView mRecyclerView;
 
     private List<String> mTitles = new ArrayList<>();
 
-    @Override
-    protected void findView() {
-        mRecyclerView = findViewById(R.id.recyclerView);
-    }
 
     @Override
     protected void initData() {
-
-        for (int i = 0; i < 20; i++) {
-            mTitles.add(String.valueOf((char) ('A' + i)));
-        }
+        mTitles.add("RecyclerView封装和刷新");
+        mTitles.add("耗时等待转圈");
     }
 
     @Override
@@ -46,16 +38,22 @@ public class MainActivity extends BaseActivity<MainI, MainPresenter> implements 
         mToolbarManager.hideBackIcon();
         mToolbarManager.setToolbarTitle("MVP Demo");
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        MainBaseAdapter mainAdapter = new MainBaseAdapter(mTitles);
-        mRecyclerView.setAdapter(mainAdapter);
+        mBaseAdapter = new MainBaseAdapter(mTitles);
+        initListView();
 
-        mainAdapter.setOnItemClickListener(new CommonBaseAdapter.OnItemClickListener() {
+        mBaseAdapter.setOnItemClickListener(new CommonBaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                ToastUtils.showLong(mTitles.get(position));
-                Test1Activity.startActivity(mContext);
+                switch (position) {
+                    case 0:
+                        TestListActivity.startActivity(mContext);
+                        break;
+                    case 1:
+                        mPresenter.testLogin();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
@@ -79,6 +77,16 @@ public class MainActivity extends BaseActivity<MainI, MainPresenter> implements 
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void getFirstData() {
+
+    }
+
+    @Override
+    protected void onLoad() {
+
     }
 
     @Override
