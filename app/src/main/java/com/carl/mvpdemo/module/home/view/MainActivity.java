@@ -1,13 +1,20 @@
 package com.carl.mvpdemo.module.home.view;
 
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.pub.base.BaseActivity;
+import com.carl.mvpdemo.module.home.adapter.MainAdapter;
 import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.module.home.presenter.MainPresenter;
+import com.carl.mvpdemo.pub.base.BaseActivity;
+import com.carl.mvpdemo.pub.base.CommonAdapter;
 import com.carl.mvpdemo.pub.utils.ToastUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Carl
@@ -16,33 +23,50 @@ import com.carl.mvpdemo.pub.utils.ToastUtils;
  */
 public class MainActivity extends BaseActivity<MainI, MainPresenter> implements MainI {
 
-    private Button mButton;
+    private RecyclerView mRecyclerView;
 
+    private List<String> mTitles = new ArrayList<>();
 
     @Override
     protected void findView() {
-        mButton = findViewById(R.id.button);
+        mRecyclerView = findViewById(R.id.recyclerView);
     }
 
     @Override
     protected void initData() {
 
+        for (int i = 0; i < 20; i++) {
+            mTitles.add(String.valueOf((char) ('A' + i)));
+        }
     }
 
     @Override
     protected void initView() {
         mToolbarManager.hideBackIcon();
         mToolbarManager.setToolbarTitle("MVP Demo");
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        MainAdapter mainAdapter = new MainAdapter(mTitles);
+        mRecyclerView.setAdapter(mainAdapter);
+
+        mainAdapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ToastUtils.showLong(mTitles.get(position));
+            }
+        });
+
     }
 
     @Override
     public void setOnInteractListener() {
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPresenter.testLogin();
-            }
-        });
+//        mButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mPresenter.testLogin();
+//            }
+//        });
     }
 
     @Override
