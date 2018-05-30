@@ -1,11 +1,8 @@
 package com.carl.mvpdemo.module.home.adapter;
 
-import android.view.View;
-
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.pub.base.CommonAdapter;
+import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;
 import com.carl.mvpdemo.pub.base.CommonViewHolder;
-import com.carl.mvpdemo.pub.utils.ToastUtils;
 
 import java.util.List;
 
@@ -14,9 +11,9 @@ import java.util.List;
  * version 1.0
  * @since 2018/5/29
  */
-public class MainAdapter extends CommonAdapter<String> {
+public class MainBaseAdapter extends CommonBaseAdapter<String> {
 
-    public MainAdapter(List<String> mDataList) {
+    public MainBaseAdapter(List<String> mDataList) {
         super(mDataList);
     }
 

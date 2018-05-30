@@ -6,11 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.module.home.adapter.MainAdapter;
+import com.carl.mvpdemo.module.home.adapter.MainBaseAdapter;
 import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.module.home.presenter.MainPresenter;
+import com.carl.mvpdemo.module.test.Test1Activity;
 import com.carl.mvpdemo.pub.base.BaseActivity;
-import com.carl.mvpdemo.pub.base.CommonAdapter;
+import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;
 import com.carl.mvpdemo.pub.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -47,13 +48,14 @@ public class MainActivity extends BaseActivity<MainI, MainPresenter> implements 
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        MainAdapter mainAdapter = new MainAdapter(mTitles);
+        MainBaseAdapter mainAdapter = new MainBaseAdapter(mTitles);
         mRecyclerView.setAdapter(mainAdapter);
 
-        mainAdapter.setOnItemClickListener(new CommonAdapter.OnItemClickListener() {
+        mainAdapter.setOnItemClickListener(new CommonBaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 ToastUtils.showLong(mTitles.get(position));
+                Test1Activity.startActivity(mContext);
             }
         });
 
