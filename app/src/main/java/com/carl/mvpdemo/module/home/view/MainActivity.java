@@ -22,10 +22,12 @@ import java.util.List;
  */
 public class MainActivity extends BaseListActivity<MainI, MainPresenter> implements MainI {
 
-    private RecyclerView mRecyclerView;
-
     private List<String> mTitles = new ArrayList<>();
 
+    @Override
+    public void setOnInteractListener() {
+
+    }
 
     @Override
     protected void initData() {
@@ -57,16 +59,6 @@ public class MainActivity extends BaseListActivity<MainI, MainPresenter> impleme
             }
         });
 
-    }
-
-    @Override
-    public void setOnInteractListener() {
-//        mButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mPresenter.testLogin();
-//            }
-//        });
     }
 
     @Override
