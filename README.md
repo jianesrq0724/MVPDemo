@@ -16,6 +16,7 @@
       }
      
 ## 权限完成封装，请求权限
+````
 permissions("短信", new String[]{Manifest.permission.SEND_SMS}, new PermissionsResultListener() {
 
     @Override
@@ -28,7 +29,7 @@ permissions("短信", new String[]{Manifest.permission.SEND_SMS}, new Permission
         ToastUtils.showShort("短信权限拒绝");
     }
 });
-
+````
 ## 集成以下功能
 * 异常崩溃的捕获
 * log日志的本地保存
@@ -37,10 +38,8 @@ permissions("短信", new String[]{Manifest.permission.SEND_SMS}, new Permission
 * 防止快速点击启动多个页面
 * toolBar封装
 * 权限的封装
-
---- 
-# 待解决的问题:
 * 封装BaseRecyclerView
+
 
 # 关于toolBar的封装 
 * 封装在BaseActivity,优点：不用使用ToolBarUtils，缺点：多封装了一层
