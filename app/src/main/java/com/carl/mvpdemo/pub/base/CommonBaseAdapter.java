@@ -1,4 +1,4 @@
-package com.carl.mvpdemo.pub.base.adapter;
+package com.carl.mvpdemo.pub.base;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

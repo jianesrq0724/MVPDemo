@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;
 
 /**
  * @author Carl

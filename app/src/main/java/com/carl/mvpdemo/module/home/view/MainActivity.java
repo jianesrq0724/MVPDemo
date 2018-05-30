@@ -1,6 +1,5 @@
 package com.carl.mvpdemo.module.home.view;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.carl.mvpdemo.R;
@@ -9,7 +8,7 @@ import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.module.home.presenter.MainPresenter;
 import com.carl.mvpdemo.module.testlist.TestListActivity;
 import com.carl.mvpdemo.pub.base.BaseListActivity;
-import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;
+import com.carl.mvpdemo.pub.base.CommonBaseAdapter;
 import com.carl.mvpdemo.pub.utils.ToastUtils;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package com.carl.mvpdemo.module.home.adapter;
 
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.pub.base.adapter.CommonBaseAdapter;
+import com.carl.mvpdemo.pub.base.CommonBaseAdapter;
 import com.carl.mvpdemo.pub.base.CommonViewHolder;
 
 import java.util.List;
