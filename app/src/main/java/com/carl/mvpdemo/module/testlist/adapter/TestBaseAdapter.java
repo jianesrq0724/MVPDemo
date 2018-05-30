@@ -27,5 +27,4 @@ public class TestBaseAdapter extends CommonBaseAdapter<String> {
         holder.setText(R.id.content_tv, entity);
     }
 
-
 }

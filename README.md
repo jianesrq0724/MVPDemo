@@ -15,20 +15,41 @@
 * 防止快速点击启动多个页面
 * ToolBar封装
 
-##  关于toolBar的封装 
-* 在BaseActviity中重写setContetnView方法，封装ToolbarManager来管理ToolBar
+## ComonAdapter用法
 ````
-@Override
-public void setContentView(int layoutResID) {
-    if (R.layout.pub_activity_base == layoutResID) {
-        super.setContentView(R.layout.pub_activity_base);
-        mContentView = (FrameLayout) findViewById(R.id.content_view_fl);
-        mContentView.removeAllViews();
-    } else if (layoutResID != R.layout.pub_activity_base) {
-        View addView = LayoutInflater.from(this).inflate(layoutResID, null);
-        mContentView.addView(addView);
+public class TestBaseAdapter extends CommonBaseAdapter<String> {
+
+    public TestBaseAdapter(List mDataList) {
+        super(mDataList);
+    }
+    
+    @Override
+    public int getLayoutId() {
+        return R.layout.pub_item_recyclerview;
+    }
+
+    @Override
+    public void conner(CommonViewHolder holder, String entity) {
+        holder.setText(R.id.content_tv, entity);
+    }
+
+}
+````
+
+## BaseListActivity用法
+````
+public class TestListActivity extends BaseListActivity {
+
+    private List<String> mTitles = new ArrayList<>();
+    @Override
+    protected void initView() {
+        super.initView();
+        mBaseAdapter = new TestBaseAdapter(mTitles);
+        initListView();
+//        enableRefresh(false);//是否屏蔽刷新
     }
 }
+
 ````
 
 ##  耗时等待转圈封装
@@ -63,3 +84,22 @@ permissions("短信", new String[]{Manifest.permission.SEND_SMS}, new Permission
 });
 ````
 
+##  关于toolBar的封装 
+* 在BaseActviity中重写setContetnView方法，封装ToolbarManager来管理ToolBar
+````
+@Override
+public void setContentView(int layoutResID) {
+    if (R.layout.pub_activity_base == layoutResID) {
+        super.setContentView(R.layout.pub_activity_base);
+        mContentView = (FrameLayout) findViewById(R.id.content_view_fl);
+        mContentView.removeAllViews();
+    } else if (layoutResID != R.layout.pub_activity_base) {
+        View addView = LayoutInflater.from(this).inflate(layoutResID, null);
+        mContentView.addView(addView);
+    }
+}
+ 
+标题设置：
+mToolbarManager.setToolbarTitle("MVP Demo");
+
+````

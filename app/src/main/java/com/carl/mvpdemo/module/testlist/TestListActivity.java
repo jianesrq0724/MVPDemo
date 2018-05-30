@@ -32,21 +32,6 @@ public class TestListActivity extends BaseListActivity {
         context.startActivity(intent);
     }
 
-    @Override
-    protected void initData() {
-        super.initData();
-    }
-
-    private List<String> createData() {
-        List<String> titles = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            Random random = new Random();
-            int i1 = random.nextInt(60);
-            SystemClock.sleep(60);
-            titles.add(String.valueOf((char) ('A' + i1)));
-        }
-        return titles;
-    }
 
     @Override
     protected void initView() {
@@ -61,6 +46,17 @@ public class TestListActivity extends BaseListActivity {
     protected void onStart() {
         super.onStart();
         getFirstData();
+    }
+
+    private List<String> createData() {
+        List<String> titles = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            Random random = new Random();
+            int i1 = random.nextInt(60);
+            SystemClock.sleep(60);
+            titles.add(String.valueOf((char) ('A' + i1)));
+        }
+        return titles;
     }
 
     @Override
