@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.carl.mvpdemo.pub.base.CommonViewHolder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +15,6 @@ import java.util.List;
  * @since 2018/5/29
  */
 public abstract class CommonBaseAdapter<T> extends RecyclerView.Adapter<CommonViewHolder> {
-
-    /**
-     * 普通Item View
-     */
-    protected static final int TYPE_ITEM = 0;
-
-    /**
-     * 顶部FootView
-     */
-    protected static final int TYPE_FOOTER = 1;
-
 
     protected List<T> mDataList;
     private OnItemClickListener mOnItenClickListener = null;
@@ -60,11 +47,7 @@ public abstract class CommonBaseAdapter<T> extends RecyclerView.Adapter<CommonVi
 
     @Override
     public void onBindViewHolder(@NonNull CommonViewHolder holder, int position) {
-        if (getItemViewType(position) == TYPE_FOOTER) {
-
-        } else {
-            conner(holder, mDataList.get(position));
-        }
+        conner(holder, mDataList.get(position));
     }
 
     @Override
