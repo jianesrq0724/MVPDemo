@@ -3,12 +3,12 @@ package com.carl.mvpdemo.module.home.view;
 import android.view.View;
 
 import com.carl.mvpdemo.R;
-import com.carl.mvpdemo.module.home.adapter.MainBaseAdapter;
 import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.module.home.presenter.MainPresenter;
 import com.carl.mvpdemo.module.testlist.TestListActivity;
 import com.carl.mvpdemo.pub.base.BaseListActivity;
 import com.carl.mvpdemo.pub.base.CommonBaseAdapter;
+import com.carl.mvpdemo.pub.base.CommonSimpleAdapter;
 import com.carl.mvpdemo.pub.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class MainActivity extends BaseListActivity<MainI, MainPresenter> impleme
         mToolbarManager.hideBackIcon();
         mToolbarManager.setToolbarTitle("MVP Demo");
 
-        mBaseAdapter = new MainBaseAdapter(mTitles);
+        mBaseAdapter = new CommonSimpleAdapter(mTitles);
         initListView();
 
         mBaseAdapter.setOnItemClickListener(new CommonBaseAdapter.OnItemClickListener() {

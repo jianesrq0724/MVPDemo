@@ -3,7 +3,6 @@ package com.carl.mvpdemo.pub.base;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -88,7 +87,8 @@ public abstract class BaseListActivity<V, T extends BasePresenter<V>> extends Ba
         if (mRecyclerView != null && mBaseAdapter != null) {
             mLinearLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.setLayoutManager(mLinearLayoutManager);
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+            //去掉分割线
+//            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
             mRecyclerView.setAdapter(mBaseAdapter);
         }
     }
