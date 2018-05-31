@@ -35,6 +35,7 @@ public class BasePresenter<T> {
             mViewRef.clear();
             mViewRef = null;
         }
+        mRxManage.clear();
     }
 
 }
