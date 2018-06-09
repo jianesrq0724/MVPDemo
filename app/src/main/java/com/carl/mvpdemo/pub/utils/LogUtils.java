@@ -80,7 +80,7 @@ public class LogUtils {
      * @return
      */
     private static boolean checkNetWorkEnvironment() {
-        return false;
+        return true;
     }
 
 }

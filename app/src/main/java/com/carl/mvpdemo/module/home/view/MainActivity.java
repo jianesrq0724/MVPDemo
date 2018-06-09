@@ -1,6 +1,7 @@
 package com.carl.mvpdemo.module.home.view;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.carl.mvpdemo.R;
 import com.carl.mvpdemo.module.home.interfaces.MainI;
@@ -14,6 +15,8 @@ import com.carl.mvpdemo.pub.utils.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * @author Carl
  * @version 1.0
@@ -22,6 +25,7 @@ import java.util.List;
 public class MainActivity extends BaseListActivity<MainI, MainPresenter> implements MainI {
 
     private List<String> mTitles = new ArrayList<>();
+    TextView mTextView;
 
     @Override
     public void setOnInteractListener() {
