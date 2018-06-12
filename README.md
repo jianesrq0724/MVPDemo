@@ -5,6 +5,7 @@
 
 ## 集成以下功能
 * 封装MVP
+* 集成Retrofit2
 * 6.0运行时权限请求的封装
 * BaseRecyclerView封装
 * RxJava以及RxManage对线程管理
@@ -14,6 +15,14 @@
 * 多编译环境buildTypes
 * 防止快速点击启动多个页面
 * ToolBar封装
+
+## Retrofit用法
+````aidl
+service的获取：
+HttpClient.getInstance().createService(YiMaService.class, baseUrl)
+
+可封装单例，集体参考module/home/model/下的YiMaDataCenter和YiMaService
+````
 
 ## ComonAdapter用法
 ````
