@@ -1,5 +1,9 @@
 package com.carl.mvpdemo.pub.network;
 
+import android.text.TextUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -13,24 +17,43 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @since 2018/6/10
  */
 public class HttpClient {
-    public RestAPI service;
 
-    public static HttpClient getInstance(String baseUrl) {
-        return new HttpClient(baseUrl);
+    private static final HttpClient INSTANCE = new HttpClient();
+    private Map<String, Object> mServiceMap = new HashMap<>();
+
+    public static HttpClient getInstance() {
+        return HttpClient.INSTANCE;
+    }
+
+    private HttpClient() {
+
+    }
+
+
+    public <T> T createService(Class<T> serviceClass, String baseUrl) {
+        if (TextUtils.isEmpty(baseUrl)) {
+            baseUrl = "";
+        }
+        Object serviceObj = mServiceMap.get(serviceClass.getName() + baseUrl);
+        if (serviceObj != null) {
+            return (T) serviceObj;
+        } else {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .baseUrl(baseUrl)
+                    .build();
+            T service = retrofit.create(serviceClass);
+            mServiceMap.put(serviceClass.getName() + baseUrl, service);
+            return retrofit.create(serviceClass);
+        }
+
     }
 
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .readTimeout(5000, TimeUnit.MILLISECONDS)
-            .connectTimeout(5000, TimeUnit.MILLISECONDS)//超过时间
+            .sslSocketFactory(SSLSocketClient.getSslFactory())
+            .readTimeout(10000, TimeUnit.MILLISECONDS)
+            .connectTimeout(10000, TimeUnit.MILLISECONDS)//超过时间
             .build();
-
-    private HttpClient(String baseUrl) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .client(new OkHttpClient())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(baseUrl)
-                .build();
-        service = retrofit.create(RestAPI.class);
-    }
 }

@@ -46,6 +46,13 @@ android {
             buildConfigField "boolean", "IS_CRASH", "true"
         }
     }
+
+    /*为apk自动替换生成新名字，格式如： [項目名]_[test/release]_[version]_[date].apk*/
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "pda-${variant.name}-v${variant.versionName}.apk"
+        }
+    }
 }
 
 dependencies {
@@ -66,8 +73,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     compile 'com.squareup.retrofit2:converter-gson:2.4.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-
-    implementation 'com.google.guava:guava:25.1-android'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'

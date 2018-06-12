@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.carl.mvpdemo.R;
 import com.carl.mvpdemo.module.home.interfaces.MainI;
 import com.carl.mvpdemo.module.home.presenter.MainPresenter;
+import com.carl.mvpdemo.module.testlist.TestListActivity;
 import com.carl.mvpdemo.pub.base.BaseListActivity;
 import com.carl.mvpdemo.pub.base.CommonBaseAdapter;
 import com.carl.mvpdemo.pub.base.CommonSimpleAdapter;
@@ -31,9 +32,8 @@ public class MainActivity extends BaseListActivity<MainI, MainPresenter> impleme
 
     @Override
     protected void initData() {
-//        mTitles.add("RecyclerView封装和刷新");
-//        mTitles.add("耗时等待转圈");
-        mTitles.add("getSms");
+        mTitles.add("RecyclerView封装和刷新");
+        mTitles.add("测试网络请求");
     }
 
     @Override
@@ -49,13 +49,10 @@ public class MainActivity extends BaseListActivity<MainI, MainPresenter> impleme
             public void onItemClick(View view, int position) {
                 switch (position) {
                     case 0:
-                        mPresenter.getSms("18410101208");
-//                        TestListActivity.startActivity(mContext);
+                        TestListActivity.startActivity(mContext);
                         break;
                     case 1:
-//                        mPresenter.testLogin();
-                        break;
-                    case 2:
+                        mPresenter.login("test", "test");
                         break;
                     default:
                         break;
