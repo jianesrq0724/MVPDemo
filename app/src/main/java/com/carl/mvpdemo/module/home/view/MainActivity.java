@@ -39,7 +39,7 @@ public class MainActivity extends BaseListActivity<MainI, MainPresenter> impleme
     @Override
     protected void initView() {
         mToolbarManager.hideBackIcon();
-        mToolbarManager.setToolbarTitle("MVP Demo");
+        mToolbarManager.setToolbarTitle(getString(R.string.app_name));
 
         mBaseAdapter = new CommonSimpleAdapter(mTitles);
         initListView();
